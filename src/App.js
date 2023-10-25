@@ -4,10 +4,13 @@ import Movie from "./components/Movie";
 import FavMovie from "./components/FavMovie";
 
 import { movies } from "./movies";
+import { useSelector, useDispatch } from "react-redux";
+import { actionFavoriteMoviesMovieAdded } from "./store/actions/actionsFavoriteMovies";
+
 
 function App() {
   const [sira, setSira] = useState(0);
-  const favMovies = [];
+    const dispatch = useDispatch();
 
   function sonrakiFilm() {
 
@@ -16,6 +19,10 @@ function App() {
     else
         setSira(sira + 1);
   }
+
+    function hAddToFavoriteMovies() {
+        dispatch(actionFavoriteMoviesMovieAdded(movies[sira]));
+    }
 
   return (
     <div className="wrapper max-w-2xl mx-auto">
@@ -38,7 +45,7 @@ function App() {
             >
               Sıradaki
             </button>
-            <button className="select-none px-4 py-2 bg-blue-700 hover:bg-blue-600 text-white">
+            <button onClick={hAddToFavoriteMovies} className="select-none px-4 py-2 bg-blue-700 hover:bg-blue-600 text-white">
               Listeme ekle
             </button>
           </div>
