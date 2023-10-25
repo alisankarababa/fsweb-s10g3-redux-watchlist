@@ -56,12 +56,15 @@ function App() {
               Başa Dön
             </button>
             }
+            {
+                sira !== 0 &&
             <button
               onClick={decrementSira}
               className="select-none px-4 py-2 border border-blue-700 text-blue-700 hover:border-blue-500 hover:text-blue-500"
             >
               Önceki
             </button>
+            }
             <button
               onClick={incrementSira}
               className="select-none px-4 py-2 border border-blue-700 text-blue-700 hover:border-blue-500 hover:text-blue-500"
