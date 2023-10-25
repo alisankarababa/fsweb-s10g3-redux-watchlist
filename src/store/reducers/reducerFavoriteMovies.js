@@ -19,7 +19,7 @@ export default function reducerFavoriteMovies(state=initialState, action) {
             
             return {
                 ...state,
-                movies: state.movies.filter((movie) => movie.id !== action.payload.id)
+                movies: state.movies.filter((movie) => movie.id !== action.payload)
             }
 
         default:
