@@ -10,6 +10,7 @@ import { actionFavoriteMoviesMovieAdded } from "./store/actions/actionsFavoriteM
 
 function App() {
   const [sira, setSira] = useState(0);
+  const favMovies = useSelector( store  => store.favoriteMovies.movies);
     const dispatch = useDispatch();
 
   function sonrakiFilm() {
