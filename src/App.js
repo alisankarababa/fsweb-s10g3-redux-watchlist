@@ -13,13 +13,20 @@ function App() {
   const favMovies = useSelector( store  => store.favoriteMovies.movies);
     const dispatch = useDispatch();
 
-  function sonrakiFilm() {
+    function incrementSira() {
 
-    if ( sira === movies.length - 1 )
-        setSira(0);
-    else
-        setSira(sira + 1);
-  }
+      if ( sira === movies.length - 1 )
+          setSira(0);
+      else
+          setSira(sira + 1);
+    }
+
+    function decrementSira () {
+        if ( sira === 0 )
+            setSira(movies.length - 1);
+        else
+            setSira(sira - 1);
+    }
 
     function hAddToFavoriteMovies() {
         dispatch(actionFavoriteMoviesMovieAdded(movies[sira]));
@@ -40,12 +47,29 @@ function App() {
           <Movie sira={sira} />
 
           <div className="flex gap-3 justify-end py-3">
+            {
+                sira !== 0 &&
             <button
-              onClick={sonrakiFilm}
+              onClick={() => setSira(0)}
               className="select-none px-4 py-2 border border-blue-700 text-blue-700 hover:border-blue-500 hover:text-blue-500"
             >
-              Sıradaki
+              Başa Dön
             </button>
+            }
+            <button
+              onClick={decrementSira}
+              className="select-none px-4 py-2 border border-blue-700 text-blue-700 hover:border-blue-500 hover:text-blue-500"
+            >
+              Önceki
+            </button>
+            <button
+              onClick={incrementSira}
+              className="select-none px-4 py-2 border border-blue-700 text-blue-700 hover:border-blue-500 hover:text-blue-500"
+            >
+              Sonraki
+            </button>
+            
+            
             <button onClick={hAddToFavoriteMovies} className="select-none px-4 py-2 bg-blue-700 hover:bg-blue-600 text-white">
               Listeme ekle
             </button>
