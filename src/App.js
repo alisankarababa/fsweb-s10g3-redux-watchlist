@@ -3,12 +3,18 @@ import { Switch, Route, NavLink } from "react-router-dom";
 import Movie from "./components/Movie";
 import FavMovie from "./components/FavMovie";
 
+import { movies } from "./movies";
+
 function App() {
   const [sira, setSira] = useState(0);
   const favMovies = [];
 
   function sonrakiFilm() {
-    setSira(sira + 1);
+
+    if ( sira === movies.length - 1 )
+        setSira(0);
+    else
+        setSira(sira + 1);
   }
 
   return (
